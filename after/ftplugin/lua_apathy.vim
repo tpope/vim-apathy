@@ -2,7 +2,7 @@ function! s:matchfilter(list, pat) abort
   return filter(map(copy(a:list), 'matchstr(v:val, '.string(a:pat).')'), 'len(v:val)')
 endfunction
 
-if !exists('g:lua_path') && executable('lua')
+if !exists('g:lua_path')
   let g:lua_path = split(system('lua -e "print(package.path)"')[0:-2], ';')
   if v:shell_error || empty(g:lua_path)
     let g:lua_path = ['./?.lua', './?/init.lua']
