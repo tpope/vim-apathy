@@ -6,7 +6,7 @@ endif
 call map(b:node_modules, 'fnamemodify(v:val, ":p")')
 
 call apathy#Prepend('path', b:node_modules, apathy#EnvSplit($NODE_PATH))
-call apathy#Prepend('suffixesadd', '.coffee,.ts,.tsx,.js,.jsx,.json,.node')
+call apathy#Prepend('suffixesadd', '.coffee,.ts,.tsx,.js,.mjs,.jsx,.json,.node')
 call apathy#Append('suffixesadd', '/package.json')
 setlocal include=\\%(\\<require\\s*(\\s*\\\|\\<import\\>[^;\"']*\\)[\"']\\zs[^\"']*
 setlocal includeexpr=JavascriptNodeFind(v:fname,@%)
