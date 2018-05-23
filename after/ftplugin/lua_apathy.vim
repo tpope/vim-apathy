@@ -11,7 +11,7 @@ endif
 
 call apathy#Prepend('path',        s:matchfilter(g:lua_path, '^[^?]*[^?\/]'))
 call apathy#Prepend('suffixesadd', s:matchfilter(g:lua_path, '?\zs[^?]*$'))
-setlocal include=\\<require\\s*(\\s*[\"']
+setlocal include=\\<require\\s*(\\=\\s*[\"']
 setlocal includeexpr=LuaIncludeExpr(v:fname)
 
 call apathy#Undo()
