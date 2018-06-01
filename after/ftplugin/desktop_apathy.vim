@@ -6,7 +6,7 @@ if expand('%:p') =~# '/autostart/'
 elseif expand('%:p') =~# '/applications/'
   let &l:path = apathy#Join(map(
         \ apathy#EnvSplit($XDG_DATA_HOME, expand('~/.local/share')) +
-        \ apathy#EnvSplit($XDG_DATA_DIRS, '/usr/local/share:/usr/share'),
+        \ apathy#EnvSplit($XDG_DATA_DIRS, '/usr/local/share', '/usr/share'),
         \ 'v:val . "/applications"'))
 endif
 setlocal suffixesadd=.desktop,.directory
