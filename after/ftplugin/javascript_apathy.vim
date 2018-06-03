@@ -3,7 +3,7 @@ if empty(b:node_modules)
   unlet b:node_modules
   finish
 endif
-call map(b:node_modules, 'fnamemodify(v:val, ":p")')
+call map(b:node_modules, 'fnamemodify(v:val, ":p:s?[\\/]$??")')
 
 call apathy#Prepend('path', b:node_modules, apathy#EnvSplit($NODE_PATH))
 call apathy#Prepend('suffixesadd', '.coffee,.ts,.tsx,.js,.mjs,.jsx,.json,.node')
