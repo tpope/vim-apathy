@@ -10,7 +10,7 @@ if !exists('g:cpp_path')
       call add(g:cpp_path, matchstr(s:line, '\S\+'))
     endif
   endfor
-  unlet s:active s:line
+  unlet! s:active s:line
 endif
 
 call apathy#Prepend('path', g:cpp_path)
