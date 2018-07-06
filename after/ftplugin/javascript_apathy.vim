@@ -1,4 +1,4 @@
-let b:node_modules = finddir('node_modules', fnamemodify(resolve(@%), ':p:h').';', -1)
+let b:node_modules = finddir('node_modules', fnamemodify(resolve(apathy#Real(@%)), ':h').';', -1)
 if empty(b:node_modules)
   unlet b:node_modules
   finish

@@ -50,6 +50,19 @@ function! apathy#Split(...) abort
   return val
 endfunction
 
+function! apathy#Real(file) abort
+  let pre = substitute(matchstr(a:file, '^\a\a\+\ze:'), '^.', '\u&', '')
+  if empty(pre)
+    return fnamemodify(a:file, ':p')
+  elseif exists('*' . pre . 'Path')
+    return {pre}Path(a:file)
+  elseif exists('*' . pre . 'Real')
+    return {pre}Real(a:file)
+  else
+    return ''
+  endif
+endfunction
+
 function! apathy#EnvSplit(val, ...) abort
   return len(a:val) ? split(a:val, has('win32') ? ';' : ':') : a:000
 endfunction
