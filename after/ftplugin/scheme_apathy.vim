@@ -8,7 +8,7 @@ endif
 call apathy#Prepend('path', g:scheme_load_path)
 call apathy#Prepend('suffixesadd', '.scm')
 setlocal include=[(:]use-modules\\=\\s\\+(\\+\\zs[^)]*
-setlocal includeexpr=tr(v:fname,'\ ','/').'.scm'
+setlocal includeexpr=tr(v:fname,'\ ','/')
 setlocal define=(define\\S*\\s\\+(\\=
 
 call apathy#Undo()
