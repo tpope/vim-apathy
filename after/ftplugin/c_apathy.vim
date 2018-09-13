@@ -15,14 +15,12 @@ endfunction
 
 if &filetype ==# 'cpp' 
   if !exists('g:cpp_path')
-    let g:cpp_path = ['.']
-    let g:cpp_path += s:CPreProcIncludes('cpp -v -x c++')
+    let g:cpp_path = ['.'] + s:CPreProcIncludes('cpp -v -x c++')
   endif
   call apathy#Prepend('path', g:cpp_path)
 else
   if !exists('g:c_path')
-    let g:c_path = ['.']
-    let g:c_path += s:CPreProcIncludes('cpp -v -x c')
+    let g:c_path = ['.'] + s:CPreProcIncludes('cpp -v -x c')
   endif
   call apathy#Prepend('path', g:c_path)
 endif
