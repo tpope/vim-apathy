@@ -1,16 +1,16 @@
 function! s:CPreProcIncludes(cmd) abort
-  let l:paths = []
-  let l:active = 0
-  for l:line in executable('cpp') ? split(system(a:cmd), "\n") : []
-    if l:line =~# '^#include '
-      let l:active = 1
-    elseif l:line =~# '^\S'
-      let l:active = 0
-    elseif l:active
-      call add(l:paths, matchstr(l:line, '\S\+'))
+  let paths = []
+  let active = 0
+  for line in executable('cpp') ? split(system(a:cmd), "\n") : []
+    if line =~# '^#include '
+      let active = 1
+    elseif line =~# '^\S'
+      let active = 0
+    elseif active
+      call add(paths, matchstr(line, '\S\+'))
     endif
   endfor
-  return l:paths
+  return paths
 endfunction
 
 if &filetype ==# 'cpp' 
