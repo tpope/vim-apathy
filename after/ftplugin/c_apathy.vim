@@ -1,19 +1,30 @@
-if !exists('g:cpp_path')
-  let g:cpp_path = ['.']
-  let s:active = 0
-  for s:line in executable('cpp') ? split(system('cpp -v'), "\n") : []
-    if s:line =~# '^#include '
-      let s:active = 1
-    elseif s:line =~# '^\S'
-      let s:active = 0
-    elseif s:active
-      call add(g:cpp_path, matchstr(s:line, '\S\+'))
+function! s:CPreProcIncludes(cmd) abort
+  let paths = []
+  let active = 0
+  for line in executable('cpp') ? split(system(a:cmd), "\n") : []
+    if line =~# '^#include '
+      let active = 1
+    elseif line =~# '^\S'
+      let active = 0
+    elseif active
+      call add(paths, matchstr(line, '\S\+'))
     endif
   endfor
-  unlet! s:active s:line
+  return paths
+endfunction
+
+if &filetype ==# 'cpp' 
+  if !exists('g:cpp_path')
+    let g:cpp_path = ['.'] + s:CPreProcIncludes('cpp -v -x c++')
+  endif
+  call apathy#Prepend('path', g:cpp_path)
+else
+  if !exists('g:c_path')
+    let g:c_path = ['.'] + s:CPreProcIncludes('cpp -v -x c')
+  endif
+  call apathy#Prepend('path', g:c_path)
 endif
 
-call apathy#Prepend('path', g:cpp_path)
 setlocal include&
 setlocal includeexpr&
 setlocal define&
