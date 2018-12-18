@@ -14,7 +14,7 @@ setlocal includeexpr=JavascriptNodeFind(v:fname,@%)
 call apathy#Undo()
 
 function! JavascriptNodeFind(target, current) abort
-  let target = a:target
+  let target = substitute(a:target, '^\~[^/]\@=', '', '')
   if target =~# '^\.\.\=/'
     let target = simplify(fnamemodify(resolve(a:current), ':p:h') . '/' . target)
   endif
