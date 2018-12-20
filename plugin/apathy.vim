@@ -12,3 +12,5 @@ endif
 setglobal include=
 setglobal includeexpr=
 setglobal define=
+
+setglobal isfname+=@-@
