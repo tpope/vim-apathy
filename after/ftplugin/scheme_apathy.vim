@@ -3,6 +3,8 @@ if !exists('g:scheme_load_path') && executable('guile')
   if v:shell_error
     let g:scheme_load_path = []
   endif
+elseif !exists('g:scheme_load_path')
+  let g:scheme_load_path = []
 endif
 
 call apathy#Prepend('path', g:scheme_load_path)
