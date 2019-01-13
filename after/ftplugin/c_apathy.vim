@@ -13,7 +13,7 @@ function! s:CPreProcIncludes(exe, opts) abort
   return paths
 endfunction
 
-if &filetype ==# 'cpp' 
+if &filetype ==# 'cpp'
   if !exists('g:cpp_path')
     let g:c_path_compiler = get(g:, 'c_path_compiler', executable('clang') ? 'clang' : 'gcc')
     let g:cpp_path = ['.'] + s:CPreProcIncludes(g:c_path_compiler, '-E -v -x c++ /dev/null')
