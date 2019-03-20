@@ -28,3 +28,36 @@ function! JavascriptNodeFind(target, current) abort
   endif
   return target
 endfunction
+
+" adapted from https://github.com/romainl/ctags-patterns-for-javascript
+let &l:define = '\v' . (empty(&l:define) ? '' : '|')
+
+" classes
+let &l:define .= '^\s*var\s+\ze[A-Z]\i+\s*\=\s*function|' .
+                  \ '^\s*let\s+\ze[A-Z]\i+\s*\=\s*function|' .
+                  \ '^\s*const\s+\ze[A-Z]\i+\s*\=\s*function|' .
+                  \ '^\s*class\s+\ze\i+|'
+
+" methods
+let &l:define .= '^\s*this\.\ze\i+\s*\=.*\{$|' .
+      \ '^\s*\ze\i+\s*[:=]\s*\(*function\s*\(|' .
+      \ '^\s*\ze\i+\s*\=\s.+\=\>|' .
+      \ '^\s*static\s+\ze\i+\s*\(|' .
+      \ '^\s*\ze\i+\(.*\)\s*\{|'
+
+" generator functions
+let &l:define .= '^\s*function\s*\*\s*\(\ze\i+\)|' .
+      \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
+      \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
+      \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
+      \ '^\s*\(\*\s\)\ze\i+\s*.*\s*\{|'
+
+" free-form functions
+let &l:define .= '^\s*function\s*\i+[[:space:](]|' .
+                  \ '^\s*\(function\s*\i+[[:space:](]|' .
+                  \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
+                  \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
+                  \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
+                  \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
+                  \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
+                  \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*\([^\*]'
