@@ -53,7 +53,7 @@ let &l:define .= '^\s*function\s*\*\s*\(\ze\i+\)|' .
       \ '^\s*\(\*\s\)\ze\i+\s*.*\s*\{|'
 
 " free-form functions
-let &l:define .= '^\s*function\s*\i+[[:space:](]|' .
+let &l:define .= '^\s*function\s*\ze\i+[[:space:](]|' .
                   \ '^\s*\(function\s*\i+[[:space:](]|' .
                   \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
                   \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
