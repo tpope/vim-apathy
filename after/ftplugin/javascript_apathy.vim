@@ -46,7 +46,7 @@ let &l:define .= '^\s*this\.\ze\i+\s*\=.*\{$|' .
       \ '^\s*\ze\i+\(.*\)\s*\{|'
 
 " generator functions
-let &l:define .= '^\s*function\s*\*\s*\(\ze\i+\)|' .
+let &l:define .= '^\s*function\s*\*\s*\ze\i+|' .
       \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
       \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
       \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*function\(\s*\*\)|' .
@@ -54,14 +54,13 @@ let &l:define .= '^\s*function\s*\*\s*\(\ze\i+\)|' .
 
 " free-form functions
 let &l:define .= '^\s*function\s*\ze\i+[[:space:](]|' .
-                  \ '^\s*\(function\s*\i+[[:space:](]|' .
+                  \ '^\s*\(function\s*\ze\i+[[:space:](]|' .
                   \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
                   \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
                   \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*function[^\*][^\*]|' .
                   \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
                   \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
-                  \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*\([^\*]'
-
+                  \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*\([^\*]|'
 " exports
-let &l:define .= '^\s*export\s+function\s+\(\i+\)|' .
-                  \ '^\s*export\s+default\s+function\s+\(\i+\)'
+let &l:define .= '^\s*export\s+function\s+\ze\i+|' .
+                  \ '^\s*export\s+default\s+function\s+\ze\i+'
