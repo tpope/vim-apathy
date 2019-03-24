@@ -61,3 +61,7 @@ let &l:define .= '^\s*function\s*\ze\i+[[:space:](]|' .
                   \ '^\s*var\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
                   \ '^\s*let\s+\ze[a-z]\i+\s*\=\s*\([^\*]|' .
                   \ '^\s*const\s+\ze[a-z]\i+\s*\=\s*\([^\*]'
+
+" exports
+let &l:define .= '^\s*export\s+function\s+\(\i+\)|' .
+                  \ '^\s*export\s+default\s+function\s+\(\i+\)'
