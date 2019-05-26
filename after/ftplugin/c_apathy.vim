@@ -27,7 +27,7 @@ else
   call apathy#Prepend('path', g:c_path)
 endif
 
-setlocal include&
+setlocal include=^\\s*#\\s*include\\s*[\"<]\\@=
 setlocal includeexpr&
 setlocal define&
 
