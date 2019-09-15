@@ -89,7 +89,7 @@ you don't have to worry about `/usr/include` tainting everything.
 
 [vim-ruby]: https://github.com/vim-ruby/vim-ruby
 [rails.vim]: https://github.com/tpope/vim-rails
-[rake.vim]: https://github.com/tpope/vim-rails
+[rake.vim]: https://github.com/tpope/vim-rake
 [bundler.vim]: https://github.com/tpope/vim-bundler
 [rbenv.vim]: https://github.com/tpope/vim-rbenv
 [rvm.vim]: https://github.com/tpope/vim-rvm
